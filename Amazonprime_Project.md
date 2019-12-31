@@ -13,13 +13,13 @@ create table plans(
 plan_id number ,
 plan_amount number not null,
 plan_duration number not null,
-no_of_views number not null,
+no_of_screens number not null,
 Discount_amount number,
 
 constraint plan_id_pk primary key plan_id,
 constraint plan_amount_cr check(plan_amount>=0),
 constraint plan_duration_cr check(plan_duration>=1),
-constraint no_of_views_cr check (no_of_views>=1)
+constraint no_of_screens_cr check (no_of_views>=1)
 );
 
 ```
@@ -87,7 +87,7 @@ select * from categorys;
 ```sql
 create table prime_releases(
 prime_id number,
-categorys varchar2(10) not null,
+categorys_id number not null,
 name_of_video varchar(30) not null,
 genre varchar2(20) not null,
 season number,
@@ -102,7 +102,7 @@ casting varchar2(100),
 description_of_video varchar2(300),
 
 constraint prime_id_pk primary key(prime_id),
-constraint categorys_ck check (categorys in ('tv shows','movie','kids')),
+constraint category_id_fk foreign key (category_id) refernces categorys(category_id),
 constraint genre_ck check (genre in ('Short','Drama','Comedy','Documentary','Animation','Thriller','Horror','Romance','Fantasy','Family','Sci-Fi','Action','Music','Mystery','Crime','Adventure','Biography','History','Western','Musical','Sport','War','News','TalkShow','GameShow')), 
 constraint languages_ck check (languages in ('English','Tamil','Hindi','Telungu','Malayalam','kannadam','Bengali','chinese','spanish')),
 constraint subtitle_languages_ck check (subtitle_languages in ('English','Tamil','Hindi','Telungu','Malayalam','kannadam','Bengali','chinese','spanish')),

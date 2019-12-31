@@ -74,6 +74,7 @@ last_upload date,
 
 constraint category_id_pk primary key(category_id),
 constraint category_name_ck check(category_name in ('TVshow','Movie','Kids')),
+constraint category_un unique(category_id,category_name),
 --constraint total_ck check(total_no_of_upload >=0,last_upload>= sysdate)
 );
 ```
@@ -88,7 +89,8 @@ select * from categorys;
 ```sql
 create table prime_releases(
 prime_id number,
-categorys_id number not null,
+category_id number not null,
+category_name varchar2(10) not null,
 name_of_video varchar(30) not null,
 genre varchar2(20) not null,
 season number,
@@ -98,12 +100,13 @@ subtitle_languages varchar2(50),
 director varchar2(30),
 release_date date,
 prime_release_date date not null,
-box_office_collection number,
+box_office_collection(million) number,
 casting varchar2(100),
-description_of_video varchar2(300),
+description_of_video varchar2(1000),
 
 constraint prime_id_pk primary key(prime_id),
-constraint category_id_fk foreign key (category_id) refernces categorys(category_id),
+constraint category_id_fk foreign key (categorys_id) refernces categorys(category_id),
+constraint category_name_fk foreign key (category_name) refernces categorys(category_name),
 constraint genre_ck check (genre in ('Short','Drama','Comedy','Documentary','Animation','Thriller','Horror','Romance','Fantasy','Family','Sci-Fi','Action','Music','Mystery','Crime','Adventure','Biography','History','Western','Musical','Sport','War','News','TalkShow','GameShow')), 
 constraint languages_ck check (languages in ('English','Tamil','Hindi','Telungu','Malayalam','kannadam','Bengali','chinese','spanish')),
 constraint subtitle_languages_ck check (subtitle_languages in ('English','Tamil','Hindi','Telungu','Malayalam','kannadam','Bengali','chinese','spanish')),

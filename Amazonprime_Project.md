@@ -79,7 +79,7 @@ constraint category_name_ck check(category_name in ('TVshow','Movie','Kids')),
 query:
 ```sql
 select * from categorys;
-
+```
 # Feature 4
 
 * prime releases
@@ -115,7 +115,7 @@ query:
 
 ```sql
 select * from prime releases;
-``
+```
 
 
 

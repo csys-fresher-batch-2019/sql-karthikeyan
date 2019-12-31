@@ -50,12 +50,13 @@ mobile_no number not null,
 
 constraint customer_id_pk primary key(customer_id),
 constraint gender_ck check(gender in('M','F')),
-constraint unique_uq unique(customer_id,user_id,mail_id,mobile_no),
-constraint age_ck check(age>=10),
-constraint mobile_ck check (mobile_no  between 1111111111 and 9999999999),
-constraint plan_id_fk foreign key (plan_id) references plans(plan_id),
+constraint unique_uq unique(customer_id,user_id,mobile_no),
+constraint age_ck check(age >= 10),
+constraint mobile_ck check (mobile_no  between 1111111111 and 9999999999));
+constraint plan_id_fk foreign key (plan_id) references plans(plan_id)
 --constraint dob_ck check (DOB > sysdate)
 );
+insert into user_credits (plan_id,customer_name,customer_id,gender,DOB,age,mail_id,user_id,passwords,mobile_no) values(114,'Rathnakumar',2020,'M',to_date('01-07-1999','dd-MM-yyyy'),22,'rathnakumar@gmail.com','Rathanamedorinkasi@1999','saodhasjdks',7893423456)
 ```
 
 query:

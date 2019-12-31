@@ -20,3 +20,11 @@
 | 2020        | Rathanakumar  | M      | 01-07-1999 | 22  | rathanakumar@gmail.com | rathanamedorinkashi@1999 | 5g6h7j8k     | 9876543210 | 114     |
 | 2021        | ArjunkumarAE  | M      | 01-05-1998 | 22  | arjunkumar@gmail.com   | arjunmedorinkashi@1998   | 2w3e4r5t6y   | 3546782234 | 115     |
 | 2022        | seenivasan    | M      | 24-10-1999 | 22  | seenivasan@gmail.com   | seeniva1999@123          | xcv234sdf678 | 2346542378 | 112     |
+
+## TABLE: Categorys
+
+| category_id | category_name | total_no_of_upload | last_upload |
+|-------------|---------------|--------------------|-------------|
+| 1           | Tv Shows      | 12321              | 30-12-2019  |
+| 2           | Movies        | 3001               | 30-12-2019  |
+| 3           | Kids          | 12000              | 30-12-2019  |

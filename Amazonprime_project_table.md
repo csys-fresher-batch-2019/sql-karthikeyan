@@ -12,3 +12,11 @@
 | 115      | 665         | 3             | 3             | 75              |
 | 116      | 989         | 9             | 1             |                 |
 | 117      | 1299        | 12            | 1             | 100             |
+
+## TABLE: USER CREDITS
+
+| customer_id | customer_name | gender | DOB        | age | mail_id                | user_id                  | password     | mobile_no  | plan_id |
+|-------------|---------------|--------|------------|-----|------------------------|--------------------------|--------------|------------|---------|
+| 2020        | Rathanakumar  | M      | 01-07-1999 | 22  | rathanakumar@gmail.com | rathanamedorinkashi@1999 | 5g6h7j8k     | 9876543210 | 114     |
+| 2021        | ArjunkumarAE  | M      | 01-05-1998 | 22  | arjunkumar@gmail.com   | arjunmedorinkashi@1998   | 2w3e4r5t6y   | 3546782234 | 115     |
+| 2022        | seenivasan    | M      | 24-10-1999 | 22  | seenivasan@gmail.com   | seeniva1999@123          | xcv234sdf678 | 2346542378 | 112     |

@@ -37,6 +37,7 @@ query:
 ```sql
 
 create table user_credits(
+plan_id number not null,
 customer_id number,
 customer_name VARCHAR2(80) not null,
 gender char(2) not null ,

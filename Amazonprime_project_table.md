@@ -1,6 +1,6 @@
-#AMAZON PRIME
+# AMAZON PRIME
 
-##TABLE: PLANS
+## TABLE: PLANS
 
 
 | plans_id | plan_amount | plan_duration | no_of_Screens | discount_amount |

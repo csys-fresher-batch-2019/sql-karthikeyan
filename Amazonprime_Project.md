@@ -14,7 +14,7 @@ plan_id number ,
 plan_amount number not null,
 plan_duration number not null,
 no_of_screens number not null,
-Discount_amount number,
+discount_amount number,
 
 constraint plan_id_pk primary key plan_id,
 constraint plan_amount_cr check(plan_amount>=0),
@@ -46,13 +46,14 @@ mail_id varchar2(50)not null,
 user_id varchar2(30) not null,
 passwords varchar2(30) not null,
 mobile_no number not null,
-plan_id number not null,
 
 constraint customer_id_pk primary key(customer_id),
 constraint gender_ck check(gender in('M','F')),
-constraint unique_uq unique(customer_id,use_id,mail_id,mobile_no),
+constraint unique_uq unique(customer_id,user_id,mail_id,mobile_no),
 constraint age_ck check(age>=10),
-constraint plan_id_fk foreign key (plan_id) references plans(plan_id)
+constraint mobile_ck check (mobile_no  between 1111111111 and 9999999999),
+constraint plan_id_fk foreign key (plan_id) references plans(plan_id),
+--constraint dob_ck check (DOB > sysdate)
 );
 ```
 

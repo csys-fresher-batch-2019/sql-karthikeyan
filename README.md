@@ -233,6 +233,7 @@ drop sequence prime_id_seq;
 CREATE SEQUENCE prime_id_seq START WITH 12321 INCREMENT BY 1;
 
 
+
 insert into prime_releases (prime_id,category_id,name_of_video,genre,audio_languages,subtitle_languages,director,release_date,prime_release_date,box_office_collection_millions,casting,description_of_video) 
 values (prime_id_seq.nextval,2,'Avengers endgame','Fantasy','English','English','Russo Brothers',to_date('01-04-2019','dd-MM-YYYY'),to_date('01-11-2019','dd-MM-YYYY'),2789,'Robert Downy JR','Marvel studios biggest movie of the era');
 insert into prime_releases (prime_id,category_id,name_of_video,genre,audio_languages,subtitle_languages,director,release_date,prime_release_date,box_office_collection_millions,casting,description_of_video) 

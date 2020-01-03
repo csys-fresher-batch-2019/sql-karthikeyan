@@ -1,5 +1,5 @@
 # online entertainment video on demand application
-## AMAZON PRIME
+
 ```SQL
 drop table plans;
 drop table payment_details;

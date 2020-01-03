@@ -38,6 +38,14 @@ insert into plans(plan_id,plan_amount,plan_duration,no_of_screens) values (128,1
 
 --display all the plans available for customers
 select * from plans;--table1
+| PLAN_ID     | PLAN_AMOUNT | PLAN_DURATION | NO_OF_SCREENS | DISCOUNT_AMOUNT |
+|-------------|-------------|---------------|---------------|-----------------|
+| 121         | 199         | 30            | 1             | 0               |
+| 122         | 299         | 30            | 2             | 0               |
+| 123         | 399         | 90            | 1             | 0               |
+| 124         | 599         | 90            | 2             | 0               |
+| 125         | 999         | 180           | 1             | 0               |
+| 126         | 1299        | 180           | 3             | 0               |
 
 select * from plans where plan_duration >=90;
 

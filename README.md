@@ -251,6 +251,12 @@ select * from prime_releases;--table7
 ```sql
 
 select name_of_video from prime_releases where  name_of_video like 'A%';
+
+NAME_OF_VIDEO                 
+------------------------------
+Avengers endgame
+Avengers Civil War
+
 ```
 # feature 
 ```sql

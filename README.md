@@ -70,7 +70,6 @@ select * from plans where plan_duration >=90;
 # feature 
 ```sql
 select * from plans where plan_amount<=500;
-```
 
    PLAN_ID PLAN_AMOUNT PLAN_DURATION NO_OF_SCREENS DISCOUNT_AMOUNT
 ---------- ----------- ------------- ------------- ---------------
@@ -81,7 +80,6 @@ select * from plans where plan_amount<=500;
 # feature 
 ```sql
 select * from plans where plan_duration = 180 and plan_amount <=1000;
-```
 
    PLAN_ID PLAN_AMOUNT PLAN_DURATION NO_OF_SCREENS DISCOUNT_AMOUNT
 ---------- ----------- ------------- ------------- ---------------

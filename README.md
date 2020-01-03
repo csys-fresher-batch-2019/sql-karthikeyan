@@ -54,7 +54,7 @@ select * from plans;--table1
        128        1999           365             1               0
 
 ```
-#feature 
+# feature 
 ```sql
 select * from plans where plan_duration >=90;
 
@@ -70,7 +70,7 @@ select * from plans where plan_duration >=90;
 # feature 
 ```sql
 select * from plans where plan_amount<=500;
-
+```
 
    PLAN_ID PLAN_AMOUNT PLAN_DURATION NO_OF_SCREENS DISCOUNT_AMOUNT
 ---------- ----------- ------------- ------------- ---------------
@@ -78,11 +78,17 @@ select * from plans where plan_amount<=500;
        122         299            30             2               0
        123         399            90             1               0
 ```
+# feature 
+```sql
 select * from plans where plan_duration = 180 and plan_amount <=1000;
 
    PLAN_ID PLAN_AMOUNT PLAN_DURATION NO_OF_SCREENS DISCOUNT_AMOUNT
 ---------- ----------- ------------- ------------- ---------------
        125         999           180             1               0
+       
+```
+# feature 
+```sql
 
 --user credientials creation
 drop table user_credits;
@@ -123,10 +129,12 @@ insert into user_credits(customer_name,gender,DOB,age,mail_id,user_id,passwords,
 
 --display all the applied users--table2
 select * from user_credits;
-
+```
+# feature 
+```sql
 select * from user_credits where age<=25;
-
-
+```
+```sql
 -- to store the payments details provied by the customers to recharge wallet
 drop table payment_details;
 
@@ -148,19 +156,25 @@ constraint card_no_ch check (length(card_no)=16)
 insert into payment_details (user_id,passwords,card_category,name_on_card,card_no,date_of_expire)
 values (12346812,'asaodhasjdks','visa','Rathnakumar',1234567812345678,'3-2023');
 
-
+```
+# feature 
+```sql
 -- to display all the persons who saved their payment details to amazon account
 select * from payment_details;--table4
    USER_ID PASSWORDS            CARD_CATEGORY        NAME_ON_CARD                                          CARD_NO DATE_OF_EXPIRE      
 ---------- -------------------- -------------------- -------------------------------------------------- ---------- --------------------
   12346812 asaodhasjdks         visa                 Rathnakumar                                        1.2346E+15 3-2023              
-
+```
+# feature 
+```sql
 select * from payment_details where card_category='visa';
    USER_ID PASSWORDS            CARD_CATEGORY        NAME_ON_CARD                                          CARD_NO DATE_OF_EXPIRE      
 ---------- -------------------- -------------------- -------------------------------------------------- ---------- --------------------
   12346812 asaodhasjdks         visa                 Rathnakumar                                        1.2346E+15 3-2023              
 
-
+```
+# feature 
+```sql
 --categorys in amazon prime
 drop table categorys;
 
@@ -184,7 +198,9 @@ CATEGORY_ID CATEGORY_N
           1 TVShows   
           2 Movies    
           3 Kids   
-
+```
+# feature 
+```sql
 --videos releases or add by the amazon prime company to customers
 drop table prime_releases;
 
@@ -229,10 +245,11 @@ values (prime_id_seq.nextval,1,'Stranger things 2','Fantasy',2,8,'English','Engl
 insert into prime_releases (prime_id,category_id,name_of_video,genre,season,total_episodes,audio_languages,subtitle_languages,director,release_date,prime_release_date,box_office_collection_millions,casting,description_of_video) 
 values (prime_id_seq.nextval,1,'The Flash','Sci-Fi',3,24,'English','English','hectorplus',to_date('01-04-2014','dd-MM-YYYY'),to_date('01-11-2015','dd-MM-YYYY'),345,'Flash','A man who is the fastest person in the world Barry alan the flash');
 
---prime_id created by the computer for each videos added automatically using sequence
-
 -- display all the videos added by the company
 select * from prime_releases;--table7
+```
+# feature 
+```sql
 
 -- increase the viewers count and to reduce the time loss for searching of good movies we add imdb rating
 alter table prime_releases add imdb_rating number;
@@ -242,24 +259,45 @@ update prime_releases set imdb_rating = 2 where prime_id = 12322;
 update prime_releases set imdb_rating = 8 where prime_id = 12323;
 update prime_releases set imdb_rating = 4 where prime_id = 12324;
 update prime_releases set imdb_rating = 9 where prime_id = 12325;
+```
+# feature 
+```sql
 
 --to watch the movies accourding to the languages
 select * from prime_releases where audio_languages = 'English' order by imdb_rating desc ; 
+```
+# feature 
+```sql
 
 --to watch the movies according to there genre
 select * from prime_releases where genre = 'Fantasy' order by imdb_rating desc;
+```
+# feature 
+```sql
 
 -- to watch the new releases movies in the world
 select * from prime_releases order by release_date desc;
+```
+# feature 
+```sql
 
 -- to watch the new releases movies in the amazon_prime
 select * from prime_releases order by prime_release_date desc;
+```
+# feature 
+```sql
 
 --to watch the movies according to the imdb rating
 select * from prime_releases order by imdb_rating desc;
+```
+# feature 
+```sql
 
 --to join the category table to  find the category name and category id
 select * from categorys c join prime_releases p on c.category_id=p.category_id;
+```
+# feature 
+```sql
 
 -- to display the movies watched by the customers 
 drop table watch_lists;
@@ -296,6 +334,9 @@ select * from watch_lists;
   12346814      12321 completed                     0 01-01-20 12:00:00.000000000 AM             8
   12346814      12322 completed                     0 01-01-20 12:00:00.000000000 AM             9
 
+```
+# feature 
+```sql
 select prime_id,count(*) from watch_lists  group by prime_id;
   PRIME_ID   COUNT(*)
 ---------- ----------
@@ -303,6 +344,9 @@ select prime_id,count(*) from watch_lists  group by prime_id;
      12325          1
      12321          2
      12324          1
+ ```
+# feature 
+```sql
 select prime_id,count(*) from watch_lists where likes = 1 group by prime_id;
 | PRIME_ID | COUNT(*) |
 |----------|----------|
@@ -310,8 +354,7 @@ select prime_id,count(*) from watch_lists where likes = 1 group by prime_id;
 | 12321    | 1        |
 | 12324    | 1        |
 
-select name_of_video from prime_releases pp join (select prime_id,count(*) from watch_lists ww  group by prime_id) where pp.prime_id=ww.prime_id; 
-
+```
 
 
 

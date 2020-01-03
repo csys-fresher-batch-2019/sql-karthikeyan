@@ -38,20 +38,44 @@ insert into plans(plan_id,plan_amount,plan_duration,no_of_screens) values (128,1
 
 --display all the plans available for customers
 select * from plans;--table1
-| PLAN_ID     | PLAN_AMOUNT | PLAN_DURATION | NO_OF_SCREENS | DISCOUNT_AMOUNT |
-|-------------|-------------|---------------|---------------|-----------------|
-| 121         | 199         | 30            | 1             | 0               |
-| 122         | 299         | 30            | 2             | 0               |
-| 123         | 399         | 90            | 1             | 0               |
-| 124         | 599         | 90            | 2             | 0               |
-| 125         | 999         | 180           | 1             | 0               |
-| 126         | 1299        | 180           | 3             | 0               |
+
+   PLAN_ID PLAN_AMOUNT PLAN_DURATION NO_OF_SCREENS DISCOUNT_AMOUNT
+---------- ----------- ------------- ------------- ---------------
+       121         199            30             1               0
+       122         299            30             2               0
+       123         399            90             1               0
+       124         599            90             2               0
+       125         999           180             1               0
+       126        1299           180             3               0
+       127        1599           270             1               0
+       128        1999           365             1               0
+
 
 select * from plans where plan_duration >=90;
 
+   PLAN_ID PLAN_AMOUNT PLAN_DURATION NO_OF_SCREENS DISCOUNT_AMOUNT
+---------- ----------- ------------- ------------- ---------------
+       123         399            90             1               0
+       124         599            90             2               0
+       125         999           180             1               0
+       126        1299           180             3               0
+       127        1599           270             1               0
+       128        1999           365             1               0
+
+
 select * from plans where plan_amount<=500;
 
-select * from plans where plan_duration = 180 and plan_amount <=1000; 
+   PLAN_ID PLAN_AMOUNT PLAN_DURATION NO_OF_SCREENS DISCOUNT_AMOUNT
+---------- ----------- ------------- ------------- ---------------
+       121         199            30             1               0
+       122         299            30             2               0
+       123         399            90             1               0
+
+select * from plans where plan_duration = 180 and plan_amount <=1000;
+
+   PLAN_ID PLAN_AMOUNT PLAN_DURATION NO_OF_SCREENS DISCOUNT_AMOUNT
+---------- ----------- ------------- ------------- ---------------
+       125         999           180             1               0
 
 --user credientials creation
 drop table user_credits;
@@ -120,8 +144,14 @@ values (12346812,'asaodhasjdks','visa','Rathnakumar',1234567812345678,'3-2023');
 
 -- to display all the persons who saved their payment details to amazon account
 select * from payment_details;--table4
+   USER_ID PASSWORDS            CARD_CATEGORY        NAME_ON_CARD                                          CARD_NO DATE_OF_EXPIRE      
+---------- -------------------- -------------------- -------------------------------------------------- ---------- --------------------
+  12346812 asaodhasjdks         visa                 Rathnakumar                                        1.2346E+15 3-2023              
 
 select * from payment_details where card_category='visa';
+   USER_ID PASSWORDS            CARD_CATEGORY        NAME_ON_CARD                                          CARD_NO DATE_OF_EXPIRE      
+---------- -------------------- -------------------- -------------------------------------------------- ---------- --------------------
+  12346812 asaodhasjdks         visa                 Rathnakumar                                        1.2346E+15 3-2023              
 
 
 --categorys in amazon prime
@@ -142,6 +172,11 @@ insert into categorys (category_id,category_name) values (3,'Kids');
 
 --displays all the categorys of  videos the viewers need
 select * from categorys;--table6
+CATEGORY_ID CATEGORY_N
+----------- ----------
+          1 TVShows   
+          2 Movies    
+          3 Kids   
 
 --videos releases or add by the amazon prime company to customers
 drop table prime_releases;
@@ -246,8 +281,21 @@ update watch_lists set likes = 0 where user_id=12346814;
 --to display all the movie watched and still watching by the customers
 
 select * from watch_lists;
+   USER_ID   PRIME_ID STATUS                    LIKES STARTED_ON                     VIEWER_RATING
+---------- ---------- -------------------- ---------- ------------------------------ -------------
+  12346812      12321 completed                     1 01-01-20 12:00:00.000000000 AM             9
+  12346815      12324 completed                     1 01-01-20 12:00:00.000000000 AM             6
+  12346812      12325 completed                     1 01-01-20 12:00:00.000000000 AM             4
+  12346814      12321 completed                     0 01-01-20 12:00:00.000000000 AM             8
+  12346814      12322 completed                     0 01-01-20 12:00:00.000000000 AM             9
 
 select prime_id,count(*) from watch_lists  group by prime_id;
+  PRIME_ID   COUNT(*)
+---------- ----------
+     12322          1
+     12325          1
+     12321          2
+     12324          1
 select prime_id,count(*) from watch_lists where likes = 1 group by prime_id;
 | PRIME_ID | COUNT(*) |
 |----------|----------|

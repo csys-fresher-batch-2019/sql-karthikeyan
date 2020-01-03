@@ -250,6 +250,11 @@ select * from prime_releases;--table7
 # feature 
 ```sql
 
+select name_of_video from prime_releases where  name_of_video like 'A%';
+```
+# feature 
+```sql
+
 -- increase the viewers count and to reduce the time loss for searching of good movies we add imdb rating
 alter table prime_releases add imdb_rating number;
 

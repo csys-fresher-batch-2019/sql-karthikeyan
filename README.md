@@ -241,6 +241,11 @@ select * from watch_lists;
 
 select prime_id,count(*) from watch_lists  group by prime_id;
 select prime_id,count(*) from watch_lists where likes = 1 group by prime_id;
+| PRIME_ID | COUNT(*) |
+|----------|----------|
+| 12325    | 1        |
+| 12321    | 1        |
+| 12324    | 1        |
 
 select name_of_video from prime_releases pp join (select prime_id,count(*) from watch_lists ww  group by prime_id) where pp.prime_id=ww.prime_id; 
 

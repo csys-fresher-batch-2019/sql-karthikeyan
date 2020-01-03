@@ -44,7 +44,19 @@ select * from plans where plan_duration >=90;
 select * from plans where plan_amount<=500;
 
 select * from plans where plan_duration = 180 and plan_amount <=1000; 
-
+```
+   PLAN_ID PLAN_AMOUNT PLAN_DURATION NO_OF_SCREENS DISCOUNT_AMOUNT
+---------- ----------- ------------- ------------- ---------------
+       121         199            30             1               0
+       122         299            30             2               0
+       123         399            90             1               0
+       124         599            90             2               0
+       125         999           180             1               0
+       126        1299           180             3               0
+       127        1599           270             1               0
+       128        1999           365             1               0
+      
+```SQL
 --user credientials creation
 drop table user_credits;
 

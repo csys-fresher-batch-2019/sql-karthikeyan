@@ -1,32 +1,6 @@
 # online entertainment video on demand application
 
-Video streaming and downloading Application
-Video On demand 
-Tv shows, Movies, Kids
-Languages
-Subtitles
-Recommendations
 
-#tables
-
-Plans
-User credits
-Payment Details
-Categories
-Prime Releases
-watch lists
-
---
-
-Filter by the age groups
-To view the total no of category's available 
-To view the movies according to their IMDB ratings
-To filter movies according to their languages
-To filter movies according to their genre
-To know the new releases in country and in the application
-Top priorities using IMDB rating
-To create top priorities list using application user views
-To filter using the likes
 
 ```SQL
 drop table plans;

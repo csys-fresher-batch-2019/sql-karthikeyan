@@ -13,6 +13,9 @@ drop sequence prime_id_seq;
 
 --amazon_prime plans 
 drop table plans;
+```
+# feature 
+```sql
 
 create table plans(
 plan_id number ,
@@ -50,7 +53,9 @@ select * from plans;--table1
        127        1599           270             1               0
        128        1999           365             1               0
 
-
+```
+#feature 
+```sql
 select * from plans where plan_duration >=90;
 
    PLAN_ID PLAN_AMOUNT PLAN_DURATION NO_OF_SCREENS DISCOUNT_AMOUNT
@@ -61,16 +66,18 @@ select * from plans where plan_duration >=90;
        126        1299           180             3               0
        127        1599           270             1               0
        128        1999           365             1               0
-
-
+```
+# feature 
+```sql
 select * from plans where plan_amount<=500;
+
 
    PLAN_ID PLAN_AMOUNT PLAN_DURATION NO_OF_SCREENS DISCOUNT_AMOUNT
 ---------- ----------- ------------- ------------- ---------------
        121         199            30             1               0
        122         299            30             2               0
        123         399            90             1               0
-
+```
 select * from plans where plan_duration = 180 and plan_amount <=1000;
 
    PLAN_ID PLAN_AMOUNT PLAN_DURATION NO_OF_SCREENS DISCOUNT_AMOUNT

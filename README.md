@@ -98,6 +98,19 @@ insert into user_credits(customer_name,gender,DOB,age,mail_id,user_id,passwords,
 select * from user_credits;
 
 select * from user_credits where age<=25;
+```
+CUSTOMER_NAME                                                                    GE DOB             AGE MAIL_ID                                               USER_ID PASSWORDS                       MOBILE_NO CREATED_DATE                  
+-------------------------------------------------------------------------------- -- -------- ---------- -------------------------------------------------- ---------- ------------------------------ ---------- ------------------------------
+Arjunkumar                                                                       M  01-09-99         22 arjunkumar@gmail.com                                 12346812 saodha23sjdks                  9643423456 03-01-20 09:39:43.056000000 AM
+Ramkumar                                                                         M  04-07-00         21 ramkumar@gmail.com                                   12346813 23saodhasjwedks                9673423456 03-01-20 09:39:43.063000000 AM
+Akshykumar                                                                       M  29-01-97         24 akshykumar@gmail.com                                 12346814 saodhasjdks                    6893423456 03-01-20 09:39:43.072000000 AM
+Anadhan                                                                          M  01-01-92         27 anadhan@gmail.com                                    12346815 saodherrfdks                   7887123456 03-01-20 09:39:43.082000000 AM
+yogesh                                                                           M  01-01-92         27 yogesh@gmail.com                                     12346816 asaodhasjdks                   8023423456 03-01-20 09:39:43.086000000 AM
+Arunkumar                                                                        M  01-01-92         27 arunkumar@gmail.com                                  12346817 saodha23sjdks                  9643343456 03-01-20 09:39:43.091000000 AM
+kumar                                                                            M  01-01-92         27 ramkumar@gmail.com                                   12346818 23saodhasjwedks                9673423456 03-01-20 09:39:43.096000000 AM
+vignesh                                                                          M  01-01-92         27 vignesh@gmail.com                                    12346819 saodhasjdks                    6828423456 03-01-20 09:39:43.101000000 AM
+Anadhakumar                                                                      M  01-01-92         27 anadhakumar@gmail.com                                12346820 saodherrfdks                   7889233456 03-01-20 09:39:43.106000000 AM
+```SQL
 
 
 -- to store the payments details provied by the customers to recharge wallet

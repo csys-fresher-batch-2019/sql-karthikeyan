@@ -125,31 +125,35 @@ CATEGORY_ID CATEGORY_N
 ```sql
 --videos releases or add by the amazon prime company to customers
 drop table prime_releases;
-
 create table prime_releases(
 prime_id number,
 category_id number not null,
-name_of_video varchar2(30) not null,
+name_of_video varchar2(100) not null,
 genre varchar2(20) not null,
 season number default 0,
 total_episodes number default 0,
 audio_languages varchar2(50) not null,
 subtitle_languages varchar2(50),
-director varchar2(30),
+director varchar2(50),
 release_date date,
-prime_release_date date not null,
+prime_release_date date,
 box_office_collection_millions number,
 casting varchar2(100),
-description_of_video varchar2(300),
+description_of_video varchar2(1000),
+imdb_rating number,
+originals number,
+tlikes  number,
+tdislikes number,
+tviewer_rating number,
 
 constraint prime_id_pk primary key(prime_id),
 constraint category_id_fk foreign key (category_id) references categorys(category_id),
 constraint genre_ck check (genre in ('Short','Drama','Comedy','Documentary','Animation','Thriller','Horror','Romance','Fantasy','Family','Sci-Fi','Action','Music','Mystery','Crime','Adventure','Biography','History','Western','Musical','Sport','War','News','TalkShow','GameShow')), 
 constraint languages_ck check (audio_languages in ('English','Tamil','Hindi','Telungu','Malayalam','kannadam','Bengali','chinese','spanish')),
 constraint subtitle_languages_ck check (subtitle_languages in ('English','Tamil','Hindi','Telungu','Malayalam','kannadam','Bengali','chinese','spanish')),
-constraint prime_id_ujz unique (prime_id,name_of_video)
---constraint release_date_ck check(release_date <= SYSDATE ,prime_release_date <= SYSDATE )
+constraint unique_id_lk unique (prime_id,name_of_video,audio_languages)
 );
+
 
 drop sequence prime_id_seq;
 
@@ -171,54 +175,7 @@ values (prime_id_seq.nextval,1,'The Flash','Sci-Fi',3,24,'English','English','he
 -- display all the videos added by the company
 select * from prime_releases;--table7
 ```
-# feature 
-```sql
 
--- increase the viewers count and to reduce the time loss for searching of good movies we add imdb rating
-alter table prime_releases add imdb_rating number;
-
-update prime_releases set imdb_rating = 10 where prime_id = 12321;
-update prime_releases set imdb_rating = 2 where prime_id = 12322;
-update prime_releases set imdb_rating = 8 where prime_id = 12323;
-update prime_releases set imdb_rating = 4 where prime_id = 12324;
-update prime_releases set imdb_rating = 9 where prime_id = 12325;
-```
-# feature 
-```sql
-
---to watch the movies accourding to the languages
-select * from prime_releases where audio_languages = 'English' order by imdb_rating desc ; 
-```
-# feature 
-```sql
-
---to watch the movies according to there genre
-select * from prime_releases where genre = 'Fantasy' order by imdb_rating desc;
-```
-# feature 
-```sql
-
--- to watch the new releases movies in the world
-select * from prime_releases order by release_date desc;
-```
-# feature 
-```sql
-
--- to watch the new releases movies in the amazon_prime
-select * from prime_releases order by prime_release_date desc;
-```
-# feature 
-```sql
-
---to watch the movies according to the imdb rating
-select * from prime_releases order by imdb_rating desc;
-```
-# feature 
-```sql
-
---to join the category table to  find the category name and category id
-select * from categorys c join prime_releases p on c.category_id=p.category_id;
-```
 # feature 
 ```sql
 

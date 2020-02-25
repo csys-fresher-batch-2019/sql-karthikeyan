@@ -161,16 +161,16 @@ CREATE SEQUENCE prime_id_seq START WITH 12321 INCREMENT BY 1;
 
 
 
-insert into prime_releases (prime_id,category_id,name_of_video,genre,audio_languages,subtitle_languages,director,release_date,prime_release_date,box_office_collection_millions,casting,description_of_video) 
-values (prime_id_seq.nextval,2,'Avengers endgame','Fantasy','English','English','Russo Brothers',to_date('01-04-2019','dd-MM-YYYY'),to_date('01-11-2019','dd-MM-YYYY'),2789,'Robert Downy JR','Marvel studios biggest movie of the era');
-insert into prime_releases (prime_id,category_id,name_of_video,genre,audio_languages,subtitle_languages,director,release_date,prime_release_date,box_office_collection_millions,casting,description_of_video) 
-values (prime_id_seq.nextval,2,'Avengers Civil War','Fantasy','English','English','Russo Brothers',to_date('27-04-2016','dd-MM-YYYY'),to_date('07-10-2017','dd-MM-YYYY'),1239,'Robert Downy JR','Fight between a two group of super hero who possess a wonderfull power');
-insert into prime_releases (prime_id,category_id,name_of_video,genre,audio_languages,subtitle_languages,director,release_date,prime_release_date,box_office_collection_millions,casting,description_of_video) 
-values (prime_id_seq.nextval,2,'Mr.Bean','Comedy','English','English','Emmanuvel',to_date('12-09-1998','dd-MM-YYYY'),to_date('3-3-2012','dd-MM-YYYY'),60,'Rowen atkinson','A life a lonely man who enjoys every second of his single person life');
-insert into prime_releases (prime_id,category_id,name_of_video,genre,season,total_episodes,audio_languages,subtitle_languages,director,release_date,prime_release_date,box_office_collection_millions,casting,description_of_video) 
-values (prime_id_seq.nextval,1,'Stranger things 2','Fantasy',2,8,'English','English','A.R.Murugadoss',to_date('04-09-2018','dd-MM-YYYY'),to_date('04-09-2018','dd-MM-YYYY'),500,'MIlly bobby brown','Group of 4 boys and 2 girls at there teenage who got stuck in danger with one gal who possess a uncontrollable powers');
-insert into prime_releases (prime_id,category_id,name_of_video,genre,season,total_episodes,audio_languages,subtitle_languages,director,release_date,prime_release_date,box_office_collection_millions,casting,description_of_video) 
-values (prime_id_seq.nextval,1,'The Flash','Sci-Fi',3,24,'English','English','hectorplus',to_date('01-04-2014','dd-MM-YYYY'),to_date('01-11-2015','dd-MM-YYYY'),345,'Flash','A man who is the fastest person in the world Barry alan the flash');
+insert into prime_releases (prime_id,category_id,name_of_video,genre,audio_languages,subtitle_languages,director,release_date,prime_release_date,box_office_collection_millions,casting,description_of_video,imdb_rating,originals,tlikes,tdislikes,tviewer_rating) 
+values (prime_id_seq.nextval,2,'Avengers endgame','Fantasy','English','English','Russo Brothers',to_date('01-04-2019','dd-MM-YYYY'),to_date('01-11-2019','dd-MM-YYYY'),2789,'Robert Downy JR','Marvel studios biggest movie of the era',9,0,541,2,9);
+insert into prime_releases (prime_id,category_id,name_of_video,genre,audio_languages,subtitle_languages,director,release_date,prime_release_date,box_office_collection_millions,casting,description_of_video,imdb_rating,originals,tlikes,tdislikes,tviewer_rating) 
+values (prime_id_seq.nextval,2,'Avengers Civil War','Fantasy','English','English','Russo Brothers',to_date('27-04-2016','dd-MM-YYYY'),to_date('07-10-2017','dd-MM-YYYY'),1239,'Robert Downy JR','Fight between a two group of super hero who possess a wonderfull power',8,0,345,5,8);
+insert into prime_releases (prime_id,category_id,name_of_video,genre,audio_languages,subtitle_languages,director,release_date,prime_release_date,box_office_collection_millions,casting,description_of_video,imdb_rating,originals,tlikes,tdislikes,tviewer_rating) 
+values (prime_id_seq.nextval,2,'Mr.Bean','Comedy','English','English','Emmanuvel',to_date('12-09-1998','dd-MM-YYYY'),to_date('3-3-2012','dd-MM-YYYY'),60,'Rowen atkinson','A life a lonely man who enjoys every second of his single person life',8,1,456,87,7);
+insert into prime_releases (prime_id,category_id,name_of_video,genre,season,total_episodes,audio_languages,subtitle_languages,director,release_date,prime_release_date,box_office_collection_millions,casting,description_of_video,imdb_rating,originals,tlikes,tdislikes,tviewer_rating) 
+values (prime_id_seq.nextval,1,'Stranger things 2','Fantasy',2,8,'English','English','A.R.Murugadoss',to_date('04-09-2018','dd-MM-YYYY'),to_date('04-09-2018','dd-MM-YYYY'),500,'MIlly bobby brown','Group of 4 boys and 2 girls at there teenage who got stuck in danger with one gal who possess a uncontrollable powers',7,1,45,3,7);
+insert into prime_releases (prime_id,category_id,name_of_video,genre,season,total_episodes,audio_languages,subtitle_languages,director,release_date,prime_release_date,box_office_collection_millions,casting,description_of_video,imdb_rating,originals,tlikes,tdislikes,tviewer_rating) 
+values (prime_id_seq.nextval,1,'The Flash','Sci-Fi',3,24,'English','English','hectorplus',to_date('01-04-2014','dd-MM-YYYY'),to_date('01-11-2015','dd-MM-YYYY'),345,'Flash','A man who is the fastest person in the world Barry alan the flash',6,1,345,123,6);
 
 -- display all the videos added by the company
 select * from prime_releases;--table7

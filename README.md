@@ -64,21 +64,20 @@ drop table user_credits;
 
 create table user_credits
 (
-customer_name VARCHAR2(80) not null,
-gender char(2) not null ,
-DOB date not null,
-age number not null ,
+customer_name VARCHAR2(80),
+gender char(2),
+DOB date ,
+age number ,
 mail_id varchar2(50)not null,
-user_id number,
 passwords varchar2(30) not null,
-mobile_no number not null,
+mobile_no number,
 created_date  timestamp default systimestamp,
 
 
-constraint user_id_pfg primary key(user_id),
+constraint mail_id_pfg primary key(mail_id),
 constraint gender_cak check(gender in('M','F')),
---constraint unique_uqq unique(user_id,mobile_no),
 constraint age_cuk check(age >= 10),
+constraint passwords check(length(passwords)>=8),
 constraint mobile_cdfk check (length(mobile_no)=10)
 );
 drop sequence user_id_seq;

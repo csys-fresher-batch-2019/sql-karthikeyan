@@ -4,7 +4,6 @@
 
 ```SQL
 drop table plans;
-drop table payment_details;
 drop table watch_list;
 drop table prime_releases;
 drop table categorys;
@@ -56,38 +55,7 @@ select * from plans;--table1
        128        1999           365             1               0
 
 ```
-# feature 
-```sql
-select * from plans where plan_duration >=90;
 
-   PLAN_ID PLAN_AMOUNT PLAN_DURATION NO_OF_SCREENS DISCOUNT_AMOUNT
----------- ----------- ------------- ------------- ---------------
-       123         399            90             1               0
-       124         599            90             2               0
-       125         999           180             1               0
-       126        1299           180             3               0
-       127        1599           270             1               0
-       128        1999           365             1               0
-```
-# feature 
-```sql
-select * from plans where plan_amount<=500;
-
-   PLAN_ID PLAN_AMOUNT PLAN_DURATION NO_OF_SCREENS DISCOUNT_AMOUNT
----------- ----------- ------------- ------------- ---------------
-       121         199            30             1               0
-       122         299            30             2               0
-       123         399            90             1               0
-```
-# feature 
-```sql
-select * from plans where plan_duration = 180 and plan_amount <=1000;
-
-   PLAN_ID PLAN_AMOUNT PLAN_DURATION NO_OF_SCREENS DISCOUNT_AMOUNT
----------- ----------- ------------- ------------- ---------------
-       125         999           180             1               0
-       
-```
 # feature 
 ```sql
 
@@ -122,58 +90,12 @@ insert into user_credits (customer_name,gender,DOB,age,mail_id,user_id,passwords
 insert into user_credits (customer_name,gender,DOB,age,mail_id,user_id,passwords,mobile_no) values('Ramkumar','M',to_date('04-07-2000','dd-MM-yyyy'),21,'ramkumar@gmail.com',user_id_seq.nextval,'23saodhasjwedks',9673423456);
 insert into user_credits (customer_name,gender,DOB,age,mail_id,user_id,passwords,mobile_no) values('Akshykumar','M',to_date('29-01-1997','dd-MM-yyyy'),24,'akshykumar@gmail.com',user_id_seq.nextval,'saodhasjdks',6893423456);
 insert into user_credits (customer_name,gender,DOB,age,mail_id,user_id,passwords,mobile_no) values('Anadhan','M',to_date('01-01-1992','dd-MM-yyyy'),27,'anadhan@gmail.com',user_id_seq.nextval,'saodherrfdks',7887123456);
-insert into user_credits(customer_name,gender,DOB,age,mail_id,user_id,passwords,mobile_no) values ('yogesh','M',to_date('01-01-1992','dd-MM-yyyy'),27,'yogesh@gmail.com',user_id_seq.nextval,'asaodhasjdks',8023423456);
-insert into user_credits(customer_name,gender,DOB,age,mail_id,user_id,passwords,mobile_no) values ('Arunkumar','M',to_date('01-01-1992','dd-MM-yyyy'),27,'arunkumar@gmail.com',user_id_seq.nextval,'saodha23sjdks',9643343456);
-insert into user_credits(customer_name,gender,DOB,age,mail_id,user_id,passwords,mobile_no) values ('kumar','M',to_date('01-01-1992','dd-MM-yyyy'),27,'ramkumar@gmail.com',user_id_seq.nextval,'23saodhasjwedks',9673423456);
-insert into user_credits(customer_name,gender,DOB,age,mail_id,user_id,passwords,mobile_no) values ('vignesh','M',to_date('01-01-1992','dd-MM-yyyy'),27,'vignesh@gmail.com',user_id_seq.nextval,'saodhasjdks',6828423456);
-insert into user_credits(customer_name,gender,DOB,age,mail_id,user_id,passwords,mobile_no) values ('Anadhakumar','M',to_date('01-01-1992','dd-MM-yyyy'),27,'anadhakumar@gmail.com',user_id_seq.nextval,'saodherrfdks',7889233456);
 
---display all the applied users--table2
+
+
 select * from user_credits;
 ```
-# feature 
-```sql
-select * from user_credits where age<=25;
-```
-```sql
--- to store the payments details provied by the customers to recharge wallet
-drop table payment_details;
 
-create table payment_details(
-user_id number not null,
-passwords varchar2(20) not null,
-card_category varchar2(20) not null,
-name_on_card varchar2(50) not null,
-card_no number not null,
-date_of_expire varchar2(20) not null,
-
---constraint wallet_id_us unique (wallet_id,user_id),
-constraint user_id_us foreign key (user_id) references user_credits(user_id),
-constraint card_category_ck check (card_category in ('master card','visa','rupay')),
-constraint card_no_ch check (length(card_no)=16)
-);
-
-
-insert into payment_details (user_id,passwords,card_category,name_on_card,card_no,date_of_expire)
-values (12346812,'asaodhasjdks','visa','Rathnakumar',1234567812345678,'3-2023');
-
-```
-# feature 
-```sql
--- to display all the persons who saved their payment details to amazon account
-select * from payment_details;--table4
-   USER_ID PASSWORDS            CARD_CATEGORY        NAME_ON_CARD                                          CARD_NO DATE_OF_EXPIRE      
----------- -------------------- -------------------- -------------------------------------------------- ---------- --------------------
-  12346812 asaodhasjdks         visa                 Rathnakumar                                        1.2346E+15 3-2023              
-```
-# feature 
-```sql
-select * from payment_details where card_category='visa';
-   USER_ID PASSWORDS            CARD_CATEGORY        NAME_ON_CARD                                          CARD_NO DATE_OF_EXPIRE      
----------- -------------------- -------------------- -------------------------------------------------- ---------- --------------------
-  12346812 asaodhasjdks         visa                 Rathnakumar                                        1.2346E+15 3-2023              
-
-```
 # feature 
 ```sql
 --categorys in amazon prime
@@ -253,17 +175,6 @@ select * from prime_releases;--table7
 # feature 
 ```sql
 
-select name_of_video from prime_releases where  name_of_video like 'A%';
-
-NAME_OF_VIDEO                 
-------------------------------
-Avengers endgame
-Avengers Civil War
-
-```
-# feature 
-```sql
-
 -- increase the viewers count and to reduce the time loss for searching of good movies we add imdb rating
 alter table prime_releases add imdb_rating number;
 
@@ -316,60 +227,44 @@ select * from categorys c join prime_releases p on c.category_id=p.category_id;
 drop table watch_lists;
 
 create table watch_lists(
-user_id number not null,
+mail_id varchar2(50) not null,
 prime_id number not null,
-status varchar2(20) default 'watching',
+watched number default 0,
+watch_later number default 0,
+watch_later_date TIMESTAMP,
 likes number default 0,
-started_on timestamp,
-viewer_rating number,
+dislikes number default 0,
+viewer_rating number default 0,
 
-constraint user_id_fkjg foreign key (user_id) references user_credits(user_id),
+constraint mail_id_fkjg foreign key (mail_id) references user_credits(mail_id),
 constraint prime_id_fdkg foreign key (prime_id) references prime_releases(prime_id),
-constraint status_csk check(status in('watching','completed')),
-constraint likes_cak check(likes in(-1,0,1)),
-constraint viewer_rating_cdk check(viewer_rating between 0 and 9));
+constraint watch_later_chk check(watch_later in(0,1)),
+constraint likes_cak check(likes in(0,1)),
+constraint dislikes_cak check(dislikes in(0,1)),
+constraint com_uniq unique(mail_id,prime_id),
+constraint viewer_rating_cdk check(viewer_rating between 0 and 10));
 
-insert into watch_lists(user_id,prime_id,status,likes,started_on,viewer_rating) values (12346812,12321,'completed',1,to_date('01-01-2020','dd-MM-yyyy'),9);
-insert into watch_lists(user_id,prime_id,status,likes,started_on,viewer_rating) values (12346813,12321,'completed',1,to_date('01-01-2020','dd-MM-yyyy'),10);
-insert into watch_lists(user_id,prime_id,status,likes,started_on,viewer_rating) values (12346815,12324,'completed',1,to_date('01-01-2020','dd-MM-yyyy'),6);
-insert into watch_lists(user_id,prime_id,status,likes,started_on,viewer_rating) values (12346812,12325,'completed',1,to_date('01-01-2020','dd-MM-yyyy'),4);
-insert into watch_lists(user_id,prime_id,status,likes,started_on,viewer_rating) values (12346814,12321,'completed',1,to_date('01-01-2020','dd-MM-yyyy'),8);
-insert into watch_lists(user_id,prime_id,status,likes,started_on,viewer_rating) values (12346814,12322,'completed',1,to_date('01-01-2020','dd-MM-yyyy'),9);
-update watch_lists set likes = 0 where user_id=12346814;
---to display all the movie watched and still watching by the customers
 
-select * from watch_lists;
-   USER_ID   PRIME_ID STATUS                    LIKES STARTED_ON                     VIEWER_RATING
----------- ---------- -------------------- ---------- ------------------------------ -------------
-  12346812      12321 completed                     1 01-01-20 12:00:00.000000000 AM             9
-  12346815      12324 completed                     1 01-01-20 12:00:00.000000000 AM             6
-  12346812      12325 completed                     1 01-01-20 12:00:00.000000000 AM             4
-  12346814      12321 completed                     0 01-01-20 12:00:00.000000000 AM             8
-  12346814      12322 completed                     0 01-01-20 12:00:00.000000000 AM             9
 
-```
 # feature 
 ```sql
-select prime_id,count(*) from watch_lists  group by prime_id;
-  PRIME_ID   COUNT(*)
----------- ----------
-     12322          1
-     12325          1
-     12321          2
-     12324          1
+create or replace PROCEDURE INCREMENT_WATCHED_BY_ONE 
+(
+  I_EMAIL_ID IN VARCHAR2 , 
+  I_PRIME_ID IN NUMBER,
+  I_DECIDE IN NUMBER) AS
+--v_temp number;
+BEGIN
+--V_temp := WATCHED_BY_ONE_AFTER(I_EMAIL_ID,I_PRIME_ID);
+IF I_DECIDE = 1 then
+        update watch_lists set watched = watched + 1 ,watch_later = 0 where mail_id = I_EMAIL_ID and prime_id = I_PRIME_ID;
+ELSE
+        update watch_lists set watch_later = 1 , watch_later_date = SYSTIMESTAMP where mail_id = I_EMAIL_ID and prime_id = I_PRIME_ID;
+ end if;
+ 
+COMMIT;
+END INCREMENT_WATCHED_BY_ONE;
  ```
-# feature 
-```sql
-select prime_id,count(*) from watch_lists where likes = 1 group by prime_id;
-| PRIME_ID | COUNT(*) |
-|----------|----------|
-| 12325    | 1        |
-| 12321    | 1        |
-| 12324    | 1        |
-
-```
-
-
 
 
 ```
